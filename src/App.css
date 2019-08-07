@@ -7,4 +7,6 @@
   justify-content: center;
 }
 
-
+.particles {
+  z-index: -1;
+}

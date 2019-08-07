@@ -11,7 +11,7 @@ const ImageLinkForm = ({ onInputChange, onSubmit }) => {
       <div className="form center pa4 br3 shadow-5">
         <div className="ph2 flex items-stretch">
           <input type="text" 
-            className="f4 pa2 pv2 w-70 z-1"
+            className="f4 pa2 pv2 w-70"
             onChange={onInputChange}
             />
           <button className="pointer w-30 grow f4 link ph3 pv2 ml2 dib white bg-light-purple"

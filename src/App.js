@@ -28,18 +28,22 @@ class App extends Component {
   };
 
   onInputChange = (e) => {
-    this.setState({input: e.target.value})
+    this.setState({inputField: e.target.value});
+  }
+
+  displayFaceBox = (box) => {
+    console.log(box);
+    this.setState({box: box});
   }
 
   onSubmit = () => {
-    this.setState({imgUrl: this.state.input});
-
+    this.setState({imgUrl: this.state.inputField});
     app.models
-    .predict(
-      Clarifai.FACE_DETECT_MODEL, 
-      this.state.imgUrl)
-    .then(response => this.calculateFaceLocation(response))
-    .catch(err => console.log(err));
+      .predict(
+        Clarifai.FACE_DETECT_MODEL, 
+        this.state.inputField)
+      .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
+      .catch(err => console.log(err));
   }
 
   calculateFaceLocation = (data) => {
@@ -54,13 +58,16 @@ class App extends Component {
       bottomRow: height - (clarifaiFace.bottom_row * height)
     };
   };
+
   
 
   render() {
+
+    const { box, imgUrl } = this.state;
   
     return (
       <div className="App">
-        <Particles className='fixed-ns top-0 right-0 bottom-0 left-0 z--1'
+        <Particles className='particles fixed-ns top-0 right-0 bottom-0 left-0'
                   params={particlesParams} />
         <Navigation />
         <Logo />
@@ -68,7 +75,7 @@ class App extends Component {
         <ImageLinkForm 
           onInputChange={this.onInputChange} 
           onSubmit={this.onSubmit}/>
-        <FaceRecognition imgUrl={this.state.imgUrl} />
+        <FaceRecognition box={box} imgUrl={imgUrl} />
       </div>
     );
   }
