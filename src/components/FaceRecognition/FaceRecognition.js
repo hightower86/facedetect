@@ -5,7 +5,7 @@ import './FaceRecognition.css';
 const FaceRecognition = ({ imgUrl }) => {
   return (
     <div className='img mt3 dib'>
-      <img className='br4' src={imgUrl} alt="img" width='500px' height='auto'/>
+      <img className='br4' id='inputImage' src={imgUrl} alt="img" width='500px' height='auto'/>
     </div>
   )
 }
