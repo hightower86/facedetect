@@ -12,6 +12,7 @@ const ImageLinkForm = ({ onInputChange, onSubmit }) => {
         <div className="ph2 flex items-stretch">
           <input type="text" 
             className="f4 pa2 pv2 w-70"
+            placeholder='input link to image' 
             onChange={onInputChange}
             />
           <button className="pointer w-30 grow f4 link ph3 pv2 ml2 dib white bg-light-purple"

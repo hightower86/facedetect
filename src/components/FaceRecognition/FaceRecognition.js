@@ -13,7 +13,8 @@ const FaceRecognition = ({ imgUrl, box }) => {
   return (
     <div className='img mt3 dib dfcenter'>
       <div className='absolute'>
-        <img className='br2' id='inputImage' src={imgUrl} alt="img" width='500px' height='auto'/>
+        <img className='br2' 
+        id='inputImage' src={imgUrl} alt="input image-link to field" width='500px' height='auto'/>
         <div className="bounding-box" style={bbStyle}></div>
       </div>
       
