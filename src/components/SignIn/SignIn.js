@@ -3,7 +3,7 @@ import React from 'react';
 const SignIn = ({ onChangeRoute }) => {
   return (
     <main className="pa4 black-80  dib shadow-5">
-      <form className="measure center">
+      <div className="measure center">
         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
           <legend className="f1 fw6 ph0 mh0">Sign In</legend>
           <div className="mt3">
@@ -24,9 +24,9 @@ const SignIn = ({ onChangeRoute }) => {
             />
         </div>
         <div className="lh-copy mt3">
-          <a href="#0" className="f6 link dim black db b">Register</a>
+          <p onClick={() => onChangeRoute('register')} href="#0" className="f6 link dim black db b pointer">Register</p>
         </div>
-      </form>
+      </div>
     </main>
   )
 }
