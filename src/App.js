@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'tachyons';
 import Particles from 'react-particles-js';
 import Clarifai from 'clarifai';
+import SignIn from './components/SignIn';
 
 import Navigation from './components/Navigation';
 import Logo from './components/Logo';
@@ -70,6 +71,7 @@ class App extends Component {
         <Particles className='particles fixed-ns top-0 right-0 bottom-0 left-0'
                   params={particlesParams} />
         <Navigation />
+        <SignIn />
         <Logo />
         <Rank />
         <ImageLinkForm 
