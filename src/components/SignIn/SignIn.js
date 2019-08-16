@@ -1,29 +1,28 @@
 import React from 'react';
 
 class SignIn extends React.Component {
-
   state: {
     signInEmail: '',
     signInPassword: ''
-  }
+  };
 
-  onEmailChange = (event) => {
+  onEmailChange = event => {
     this.setState({
       signInEmail: event.target.value
-    })
-  }
+    });
+  };
 
-  onPasswordChange = (event) => {
+  onPasswordChange = event => {
     this.setState({
       signInPassword: event.target.value
-    })
-  }
+    });
+  };
 
   onSubmitSignin = () => {
     console.log(this.state);
     fetch('http://localhost:3000/signin', {
       method: 'post',
-      header: {
+      headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -31,50 +30,66 @@ class SignIn extends React.Component {
         password: this.state.signInPassword
       })
     })
-    this.props.onChangeRoute('home');
-  }
+      .then(response => response.json())
+      .then(data => {
+        if (data === 'success') {
+          this.props.onChangeRoute('home');
+        }
+      });
+  };
 
   render() {
     // const { onChangeRoute } = this.props;
     return (
-      <main className="pa4 black-80  dib shadow-5">
-        <div className="measure center">
-          <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-            <legend className="f1 fw6 ph0 mh0">Sign In</legend>
-            <div className="mt3">
-              <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+      <main className='pa4 black-80  dib shadow-5'>
+        <div className='measure center'>
+          <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
+            <legend className='f1 fw6 ph0 mh0'>Sign In</legend>
+            <div className='mt3'>
+              <label className='db fw6 lh-copy f6' htmlFor='email-address'>
+                Email
+              </label>
               <input
                 onChange={this.onEmailChange}
-                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                type="email"
-                name="email-address"
-                id="email-address" />
+                className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+                type='email'
+                name='email-address'
+                id='email-address'
+              />
             </div>
-            <div className="mv3">
-              <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+            <div className='mv3'>
+              <label className='db fw6 lh-copy f6' htmlFor='password'>
+                Password
+              </label>
               <input
                 onChange={this.onPasswordChange}
-                className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                type="password"
-                name="password"
-                id="password" />
+                className='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+                type='password'
+                name='password'
+                id='password'
+              />
             </div>
           </fieldset>
-          <div className="">
+          <div className=''>
             <input
-              className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-              type="submit"
-              value="Sign in"
+              className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib'
+              type='submit'
+              value='Sign in'
               onClick={this.onSubmitSignin}
             />
           </div>
-          <div className="lh-copy mt3">
-            <p onClick={() => this.props.onChangeRoute('register')} href="#0" className="f6 link dim black db b pointer">Register</p>
+          <div className='lh-copy mt3'>
+            <p
+              onClick={() => this.props.onChangeRoute('register')}
+              href='#0'
+              className='f6 link dim black db b pointer'
+            >
+              Register
+            </p>
           </div>
         </div>
       </main>
-    )
+    );
   }
-
 }
 export default SignIn;
