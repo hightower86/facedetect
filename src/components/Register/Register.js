@@ -1,5 +1,4 @@
 import React from 'react';
-import { thisExpression } from '@babel/types';
 
 class Register extends React.Component {
   state = {
