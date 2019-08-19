@@ -42,7 +42,7 @@ class App extends Component {
         id: data.id,
         name: data.name,
         email: data.imail,
-        intries: data.entries,
+        entries: data.entries,
         joined: data.joined
       }
     });
@@ -71,7 +71,16 @@ class App extends Component {
             body: JSON.stringify({
               id: this.state.user.id
             })
-          });
+          })
+            .then(response => response.json())
+            .then(count => {
+              this.setState({
+                user: {
+                  ...this.state.user,
+                  entries: count
+                }
+              });
+            });
         }
         this.displayFaceBox(this.calculateFaceLocation(response));
       })
