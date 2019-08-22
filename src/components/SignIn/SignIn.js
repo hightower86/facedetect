@@ -19,7 +19,7 @@ class SignIn extends React.Component {
   };
 
   onSubmitSignin = () => {
-    console.log(this.state);
+    //console.log(this.state);
     fetch('http://localhost:3000/signin', {
       method: 'post',
       headers: {
@@ -31,23 +31,19 @@ class SignIn extends React.Component {
       })
     })
       .then(response => {
-        console.log(response);
         return response.json();
       })
       .then(user => {
-        console.log(user);
         if (user.id) {
           this.props.loadUser(user);
           this.props.onChangeRoute('home');
         }
       });
-    //this.props.onChangeRoute('home');
   };
 
   render() {
-    // const { onChangeRoute } = this.props;
     return (
-      <main className='pa4 black-80  dib shadow-5'>
+      <main className='ph6 pa4 black-80  dib shadow-5'>
         <div className='measure center'>
           <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
             <legend className='f1 fw6 ph0 mh0'>Sign In</legend>

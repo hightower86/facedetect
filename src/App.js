@@ -20,21 +20,22 @@ const particlesParams = {
   polygon: {}
 };
 
+const initialState = {
+  inputField: '',
+  imgUrl: '',
+  box: {},
+  route: 'signIn',
+  isSignedIn: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: ''
+  }
+};
 class App extends Component {
-  state = {
-    inputField: '',
-    imgUrl: '',
-    box: {},
-    route: 'signIn',
-    isSignedIn: false,
-    user: {
-      id: '',
-      name: '',
-      email: '',
-      entries: 0,
-      joined: ''
-    }
-  };
+  state = initialState;
 
   loadUser = data => {
     this.setState({
@@ -53,7 +54,6 @@ class App extends Component {
   };
 
   displayFaceBox = box => {
-    console.log(box);
     this.setState({ box: box });
   };
 
@@ -103,7 +103,7 @@ class App extends Component {
 
   onChangeRoute = route => {
     if (route === 'signOut') {
-      this.setState({ isSignedIn: false });
+      this.setState(initialState);
     } else if (route === 'home') {
       this.setState({ isSignedIn: true });
     }

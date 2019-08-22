@@ -1,4 +1,5 @@
 import React from 'react';
+import './Register.css';
 
 class Register extends React.Component {
   state = {
@@ -26,7 +27,7 @@ class Register extends React.Component {
   };
 
   onSubmitRegister = () => {
-    console.log(this.state);
+    //console.log(this.state);
     fetch('http://localhost:3000/register', {
       method: 'post',
       headers: {
@@ -52,16 +53,16 @@ class Register extends React.Component {
 
     return (
       <div>
-        <main className='pa4 black-80  dib shadow-5'>
+        <main className='ph6 pa4 black-80  dib shadow-5'>
           <div className='measure center'>
             <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
-              <legend className='f1 fw6 ph0 mh0'>Register</legend>
+              <legend className='f2 fw6 ph0 mh0'>Register</legend>
               <div className='mt3'>
                 <label className='db fw6 lh-copy f6' htmlFor='email-address'>
                   Name
                 </label>
                 <input
-                  className='pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100'
+                  className='pa2 input-reset ba bg-transparent hover-bg-black hover-white'
                   type='name'
                   name='name'
                   id='name'
